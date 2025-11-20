@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furry & Fabulous - Pet Couture & Playful Innovation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 🎨 Global Styles & Pink Theme */
+        :root {
+            --main-pink: #FFC0CB; /* Light Pink / Cherry Blossom */
+            --accent-pink: #FF69B4; /* Hot Pink */
+            --light-bg: #FFF0F5; /* Lavender Blush */
+            --dark-text: #333333; /* Dark Text Color */
+            --white: #ffffff;
+            --gradient-pink: linear-gradient(135deg, #FFDAB9, #FFC0CB); /* Peach to Pink */
+            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        /* Helper class for sections */
+        .section-padding {
+            padding: 80px 5%;
+        }
+
+        /* Animations */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% { opacity: 0; transform: scale3d(.3, .3, .3); }
+            20% { transform: scale3d(1.1, 1.1, 1.1); }
+            40% { transform: scale3d(.9, .9, .9); }
+            60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
+            80% { transform: scale3d(.97, .97, .97); }
+            100% { opacity: 1; transform: scale3d(1, 1, 1); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes wiggle {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            50% { transform: rotate(-2deg); }
+            75% { transform: rotate(2deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        /* 🎀 Header & Navigation */
+        header {
+            background: var(--gradient-pink);
+            padding: 15px 5%;
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-strong);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        header .logo {
+            font-family: 'Pacifico', cursive;
+            margin: 0;
+            font-size: 2.2em;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px var(--accent-pink);
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        header .logo span {
+            margin-right: 8px;
+            animation: wiggle 2s infinite ease-in-out; /* Subtle logo wiggle */
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: color 0.3s, text-shadow 0.3s, transform 0.2s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: var(--accent-pink);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease-out;
+        }
+
+        nav a:hover {
+            color: var(--accent-pink);
+            text-shadow: 1px 1px var(--white);
+            transform: translateY(-2px);
+        }
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* 🌟 Hero Section */
+        .hero {
+            background-color: var(--accent-pink);
+            color: var(--white);
+            text-align: center;
+            padding: 120px 5%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="50" font-size="20" text-anchor="middle" fill="%23FFC0CB" opacity="0.4">🐾</text></svg>');
+            background-repeat: repeat;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .hero h2 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 5px 5px #E91E63;
+            animation: bounceIn 1.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.4em;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            animation: slideInUp 1.2s ease-out 0.5s forwards;
+            opacity: 0; /* Hidden initially for animation */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--accent-pink);
+            padding: 18px 45px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2em;
+            border-radius: 50px;
+            box-shadow: var(--shadow-strong);
+            transition: background-color 0.4s, transform 0.4s, color 0.4s;
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 1.2s ease-out 0.8s forwards;
+            opacity: 0;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-pink);
+            transition: left 0.4s ease-out;
+            z-index: 1;
+            transform: skewX(-20deg);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button:hover {
+            color: var(--white);
+            transform: scale(1.08) rotate(-1deg);
+        }
+
+        /* 🐾 About Section (New!) */
+        .about-section {
+            background-color: var(--white);
+            text-align: center;
+            padding: 80px 5%;
+            animation: fadeInScale 1s ease-out;
+        }
+        .about-section h3 {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.8em;
+            color: var(--accent-pink);
+            margin-bottom: 30px;
+        }
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.15em;
+            color: var(--dark-text);
+        }
+        .about-content p {
+            margin-bottom: 20px;
+            animation: slideInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+        .about-content p:nth-child(2) { animation-delay: 0.2s; }
+
+
+        /* 🛍️ Product Catalog Section */
+        .catalog-section {
+            background-color: var(--light-bg);
+            text-align: center;
+            padding: 80px 5%;
+        }
+
+        .catalog-section h3 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            color: var(--accent-pink);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            animation: bounceIn 1s forwards;
+        }
+
+        .catalog-section h3::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--main-pink);
+            border-radius: 2px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+            gap: 40px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 25px;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+            text-align: left;
+            border: 4px solid var(--main-pink);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 1s ease-out forwards; /* Each card animates in */
+            opacity: 0;
+        }
+        .product-card:nth-child(1) { animation-delay: 0.1s; }
+        .product-card:nth-child(2) { animation-delay: 0.2s; }
+        .product-card:nth-child(3) { animation-delay: 0.3s; }
+        .product-card:nth-child(4) { animation-delay: 0.4s; }
+        .product-card:nth-child(5) { animation-delay: 0.5s; }
+        .product-card:nth-child(6) { animation-delay: 0.6s; }
+
+
+        .product-card:hover {
+            transform: translateY(-15px) rotate(-1deg) scale(1.02);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--accent-pink);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9em;
+            transform: rotate(10deg);
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            transition: transform 0.3s ease-out;
+        }
+        .product-card:hover .tag {
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-color: var(--light-bg);
+            border-radius: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            color: var(--dark-text);
+            font-style: italic;
+            border: 2px solid var(--main-pink);
+            overflow: hidden; /* Ensure image fits */
+        }
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area */
+            transition: transform 0.5s ease-out;
+        }
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+
+        .product-card h4 {
+            font-family: 'Pacifico', cursive;
+            color: var(--accent-pink);
+            margin: 10px 0 8px;
+            font-size: 1.6em;
+            line-height: 1.2;
+        }
+
+        .product-card p {
+            font-size: 1.05em;
+            color: #555555;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #E91E63;
+            font-size: 1.8em;
+            display: block;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        /* 📞 Contact Section */
+        .contact-section {
+            background: var(--gradient-pink);
+            padding: 60px 5%;
+            text-align: center;
+            color: var(--white);
+            animation: fadeInScale 1s ease-out;
+        }
+
+        .contact-section h3 {
+            font-family: 'Pacifico', cursive;
+            font-size: 3em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px var(--accent-pink);
+        }
+
+        .contact-info p {
+            font-size: 1.2em;
+            margin: 12px 0;
+            animation: slideInUp 1s ease-out forwards;
+            opacity: 0;
+        }
+        .contact-info p:nth-child(1) { animation-delay: 0.1s; }
+        .contact-info p:nth-child(2) { animation-delay: 0.3s; }
+        .contact-info p:nth-child(3) { animation-delay: 0.5s; }
+
+
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .contact-info a:hover {
+            color: var(--accent-pink);
+            text-shadow: 1px 1px var(--white);
+        }
+
+        /* 🐾 Footer */
+        footer {
+            background-color: var(--accent-pink);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 5%;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 3%;
+            }
+            header nav {
+                margin-top: 15px;
+            }
+            header nav a {
+                margin: 0 10px;
+            }
+            .hero h2 {
+                font-size: 3em;
+            }
+            .hero p {
+                font-size: 1.1em;
+            }
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+            .catalog-section h3, .about-section h3, .contact-section h3 {
+                font-size: 2.5em;
+            }
+            .section-padding {
+                padding: 50px 3%;
+            }
+            .product-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+            .product-card {
+                width: 90%;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#home" class="logo"><span>🐾</span> Furry & Fabulous</a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">Our Story</a>
+            <a href="#catalog">Shop All</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+    </header>
+
+    <div class="hero" id="home">
+        <h2>Style Your Pet, Pink & Pawfect!</h2>
+        <p>Discover innovative designs and luxurious fabrics for the most fashionable pets in town. We believe every dog and cat deserves to feel as fabulous as they are furry!</p>
+        <a href="#catalog" class="cta-button"><span>Explore Our Creative Collection</span></a>
+    </div>
+
+    <div class="about-section section-padding" id="about">
+        <h3>Our Story: Where Pet Couture Meets Joy!</h3>
+        <div class="about-content">
+            <p>At **Furry & Fabulous**, we're passionate about transforming ordinary moments into extraordinary ones for your beloved companions. We noticed a gap in the market for truly unique and high-quality pet apparel – clothes that are not only comfortable but also express the vibrant personalities of our furry friends.</p>
+            <p>Our journey began with a simple idea: to create a brand where **playful innovation** and **meticulous craftsmanship** intertwine. Every stitch, every fabric choice, and every design is infused with love and a dash of magic, ensuring your pet is always the star of the show.</p>
+        </div>
+    </div>
+
+    <div class="catalog-section section-padding" id="catalog">
+        <h3>🛍️ Our Creative Collection 🛍️</h3>
+        <div class="product-grid">
+
+            <div class="product-card">
+                <div class="tag">NEW ARRIVAL!</div>
+                <div class="product-image">
+                    Image Placeholder: Pet Cherry Blossom Dress
+                </div>
+                <h4>The Sparkling Cloud Dress</h4>
+                <p>A dreamy gown with shimmering layers, perfect for your princess's grand entrance. Lightweight and breathable tulle.</p>
+                <p class="price">$39.99</p>
+            </div>
+
+            <div class="product-card">
+                <div class="tag">BEST SELLER!</div>
+                <div class="product-image">
+                    Image Placeholder: Fluffy Bear Hooded Jumper
+                </div>
+                <h4>Adventure Bear Hoodie</h4>
+                <p>Cozy fleece meets cute! This jumper features adorable 3D bear ears and ensures maximum warmth and cuteness.</p>
+                <p class="price">$35.50</p>
+            </div>
+
+            <div class="product-card">
+                <div class="tag">UNIQUE!</div>
+                <div class="product-image">
+                    Image Placeholder: Elegant Bow Tie Collar
+                </div>
+                <h4>Sweetheart Bow Tie Collar</h4>
+                <p>Add a touch of playful elegance! Hand-stitched bow tie collar, adjustable and comfortable for all-day charm.</p>
+                <p class="price">$18.00</p>
+            </div>
+
+            <div class="product-card">
+                <div class="tag">PINK RAIN!</div>
+                <div class="product-image">
+                    Image Placeholder: Bubblegum Rain Slicker
+                </div>
+                <h4>The "Puddle Jumper" Raincoat</h4>
+                <p>Waterproof, vibrant pink, and utterly chic. Keep your pup dry and stylish on the cloudiest of days!</p>
+                <p class="price">$42.99</p>
+            </div>
+
+            <div class="product-card">
+                <div class="tag">LIMITED EDITION!</div>
+                <div class="product-image">
+                    Image Placeholder: Striped Comfort Tee
+                </div>
+                <h4>Rainbow Whimsy Striped Tee</h4>
+                <p>Soft cotton tee with pastel stripes, perfect for everyday wear. Lightweight and allows full range of motion.</p>
+                <p class="price">$22.00</p>
+            </div>
+
+            <div class="product-card">
+                <div class="tag">NEW!</div>
+                <div class="product-image">
+                    Image Placeholder: Cozy Winter Puffer
+                </div>
+                <h4>Arctic Explorer Puffer Coat</h4>
+                <p>Ultra-warm and fashionable puffer coat, designed for those chilly adventures. Keep them snug and sassy!</p>
+                <p class="price">$55.00</p>
+            </div>
+
+            </div>
+    </div>
+
+    <div class="contact-section section-padding" id="contact">
+        <h3>💌 Get In Touch With The F&F Team! 🐾</h3>
+        <div class="contact-info">
+            <p>We're here to help you find the perfect style for your furry friend! Reach out for sizing, styling advice, or any questions.</p>
+            <p><strong>Email:</strong> <a href="mailto:hello@furryandfabulous.com">hello@furryandfabulous.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+1555PAWFECT">+1 (555) PAWFECT</a></p>
+            <p><strong>Hours:</strong> Mon - Fri, 9 AM - 6 PM EST</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Furry & Fabulous. All Rights Reserved. Designed with Love and Paws. 💖</p>
+    </footer>
+
+</body>
+</html>
